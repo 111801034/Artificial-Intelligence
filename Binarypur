@@ -1,0 +1,56 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import statistics
+Pk = 0.2
+person = np.random.uniform(0,1)
+if person < Pk:
+    St = 0
+else:
+    St = 1
+print(St)
+HK = []
+HA = []
+WK = []
+WA = []
+RT = []
+for i in range(1,1001):
+    person = np.random.uniform(0,1)
+    At = np.random.randint(0,2)
+    if person < Pk:
+        St = 0
+    else:
+        St = 1
+    if St is 0:
+        c = np.random.uniform(0,1)
+        Wt = np.random.uniform(30,50)
+        if c < 0.5:
+            Ht = np.random.uniform(4.5,5)
+        else:
+            Ht = np.random.uniform(5,5.25)
+        WK.append(Wt)
+        HK.append(Ht)
+    else:
+        c = np.random.uniform(0,1)
+        Wt = np.random.uniform(45,60)
+        if c < 0.5:
+            Ht = np.random.uniform(5,5.25)
+        else:
+            Ht = np.random.uniform(5.25,5.75)
+        WA.append(Wt)
+        HA.append(Ht)
+    rt = (St,At)
+    if rt == (0,0):
+        Rt = 1
+    elif rt == (1,1):
+        Rt = 1
+    else:
+        Rt = 0
+    RT.append(Rt)
+    Ot = (i,St,Ht,Wt)
+    print(Ot)
+print(RT)
+print(statistics.mean(RT))
+num_bins = 5
+n, bins, patches = plt.hist(HK, num_bins, facecolor='blue', alpha=0.5)
+plt.show()
+//replace HK with the remaining lists HA,WA,WK and observe their histograms
