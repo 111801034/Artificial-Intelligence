@@ -1,0 +1,43 @@
+import numpy as np
+import statistics
+A = [1,2,3,4,6]
+PrunMax = 0.8
+PrunMin = 0.5
+PoutMax = [0.1,0.2,0.3,0.5,0,0.7]
+PoutMin = [0.01,0.02,0.03,0.1,0,0.3]
+bt = []
+wt = []
+At = []
+St = []
+Rt = []
+score = 0
+b,w = 300,10
+St.append([b,w])
+while(b!=0 and w!=0):
+    at = np.random.choice(A)
+    PR = PrunMin + (PrunMax - PrunMin) * ((w-1)/9)
+    PO = PoutMax[at - 1] + (PoutMin[at - 1] - PoutMax[at - 1]) * ((w-1)/9)
+    b = b-1
+    po = np.random.uniform(0,1)
+    pr = np.random.uniform(0,1)
+    if po >= PO:
+        if pr < PR:
+               rt = at
+        else:
+             rt = 0
+    else:
+             w = w - 1
+             rt = 0
+    st = (b,w)
+    St.append(st)
+    Rt.append(rt)
+    print(rt,st)
+    score = score + rt
+print(score)
+//you can change the probabilities of getting runs and out of a player,and play with this
+        
+        
+        
+        
+        
+    
